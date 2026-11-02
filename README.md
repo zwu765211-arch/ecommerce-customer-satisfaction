@@ -4,6 +4,26 @@ An end-to-end data analytics project using **Python, MySQL and Tableau** to expl
 
 **[Read the final analytical brief](reports/Olist_Analytical_Brief_Final.pdf)** · **[Download the Tableau workbook](https://github.com/zwu765211-arch/ecommerce-customer-satisfaction/raw/refs/heads/main/Olist_Portfolio_Final_v5.twbx)**
 
+## Dashboard previews
+
+**Sales & Category Drivers**
+
+![Sales and category drivers dashboard](assets/screenshots/02-sales-categories.png)
+
+<details>
+<summary>Market & Delivery Overview</summary>
+
+![Market and delivery overview dashboard](assets/screenshots/01-market-delivery.png)
+
+</details>
+
+<details>
+<summary>Delivery & Customer Experience</summary>
+
+![Delivery and customer experience dashboard](assets/screenshots/03-customer-experience.png)
+
+</details>
+
 ## Project contents
 
 | File / folder | Description |
