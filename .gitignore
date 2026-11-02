@@ -1,0 +1,14 @@
+# Locally downloaded and generated data
+/data/raw/
+/data/clean/
+/reports/data_quality_report.csv
+
+# Python and Jupyter
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store

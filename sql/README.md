@@ -2,6 +2,21 @@
 
 Target: MySQL 8.0.16 or later. Use a fresh `olist_ecommerce` database and one connection for setup and loading.
 
+## Notebook inputs
+
+Install the notebook dependencies from the project root with `python3 -m pip install -r requirements.txt`. This lists the required packages; exact package versions are not locked.
+
+Place these six Kaggle source files in `data/raw/`:
+
+- `olist_orders_dataset.csv`
+- `olist_order_items_dataset.csv`
+- `olist_order_reviews_dataset.csv`
+- `olist_products_dataset.csv`
+- `olist_customers_dataset.csv`
+- `product_category_name_translation.csv`
+
+Run all notebook cells from `notebooks/`. If the saved `ecommerce-analysis` kernel is unavailable, select the Python kernel for the environment where the dependencies were installed.
+
 ## Execution order
 
 1. `00_database_setup.sql` — connection checks and database setup.
@@ -33,3 +48,11 @@ Machine-readable outputs are stored in [`../reports/sql_validation/`](../reports
 ## Analytical scope
 
 The reporting window covers purchases from 2017-01-01 inclusive to 2018-09-01 exclusive. Item sales exclude freight and do not represent company revenue or profit. Review comparisons are descriptive; inspect timing sensitivity before interpreting them.
+
+## Tableau and final-brief reproducibility
+
+The packaged workbook and [final brief](../reports/Olist_Analytical_Brief_Final.pdf) are saved deliverables. The brief uses the order-summary and order-item CSVs packaged in the workbook. Running the notebook and SQL scripts does not automatically rebuild those workbook CSVs or refresh Tableau.
+
+The committed SQL outputs support the main sales, delivery and review baselines. Script 06 currently groups severe delays as `8+ days late`; it does not separately reproduce the brief's `8–14 days` and `15+ days` review-timing rows. Reproducing those rows requires those two delay groups with the same purchase window, delivery eligibility and review-response timing rule. A scripted workbook-export step and saved outputs for those finer groups remain future work.
+
+The notebook removes review text from the cleaned review table. The brief's proposed review-text classification would therefore require returning to the original review CSV and is not an implemented analysis.

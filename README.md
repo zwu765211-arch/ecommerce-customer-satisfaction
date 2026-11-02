@@ -31,7 +31,7 @@ Figures above are based on the [saved SQL results](reports/sql_validation/README
 **Raw CSVs → Python cleaning → MySQL analysis → Tableau visualisation**
 
 1. Download the [Olist dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and place the six source CSVs referenced by the notebook in `data/raw/`.
-2. Run the notebook from `notebooks/` using Python with pandas, NumPy and Matplotlib. It generates five cleaned CSVs in `data/clean/`.
+2. Install the notebook dependencies from the project root with `python3 -m pip install -r requirements.txt`, then run the notebook from `notebooks/`. It generates five cleaned CSVs in `data/clean/`.
 3. Follow the [SQL execution guide](sql/README.md) using MySQL 8.0.16 or later. Configure local CSV paths and enable `LOCAL INFILE`.
 4. Download the packaged `.twbx` file and open it in Tableau Desktop or Tableau Public.
 

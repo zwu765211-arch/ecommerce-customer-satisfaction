@@ -1,0 +1,6 @@
+# Minimal notebook dependencies; this is not a pinned environment lockfile.
+pandas
+numpy
+matplotlib
+notebook
+ipykernel
