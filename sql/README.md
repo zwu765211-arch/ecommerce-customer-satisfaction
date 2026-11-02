@@ -2,7 +2,7 @@
 
 Target: MySQL 8.0.16 or later. Use a fresh `olist_ecommerce` database and one connection for setup and loading.
 
-Run in this order:
+## Execution order
 
 1. `00_database_setup.sql` — connection checks and database setup.
 2. `01_create_tables.sql` — five final tables, keys and constraints.
@@ -17,8 +17,19 @@ Generate the five clean CSVs using `../notebooks/01_data_cleaning.ipynb`. Replac
 
 Run the loader section by section. Stop on errors or warnings. After all INSERTs and reconciliation checks pass, run `COMMIT;` manually; otherwise run `ROLLBACK;`. Optional staging cleanup statements are commented out and should run only after a successful commit. This is a fresh-load workflow, not an idempotent reload or existing-schema migration.
 
-Expected final row counts: customers 99,441; products 32,951; orders 99,441; order_items 112,650; reviews 98,673 (latest retained review per order).
+## Verified results
 
-Reporting window: purchases from 2017-01-01 inclusive to 2018-09-01 exclusive. Item sales exclude freight and do not represent company revenue or profit. Review comparisons are descriptive; inspect timing sensitivity before interpreting them.
+The full workflow was executed on 3 November 2026 against a newly initialized MySQL 8.0.46 database using clean CSVs regenerated from the project notebook.
 
-Upload review: CSV header order was checked against the notebook exports. The setup migration that ran before table creation was removed, loading transaction boundaries were clarified, and personal absolute paths were replaced. These SQL scripts have not been executed against a MySQL server in this environment; result comments are supplied snapshot baselines, not newly verified SQL outputs.
+- All five staging-to-final reconciliation checks passed.
+- All 56 checks reported by `02_data_validation.sql` passed.
+- The analytic views reconciled exactly to their source tables.
+- Scripts `04`, `05`, and `06` completed without MySQL errors or warnings.
+- Committed row counts persisted as: customers 99,441; products 32,951; orders 99,441; order_items 112,650; reviews 98,673.
+- Delivered-order KPIs reconciled to 96,211 orders, BRL 13,181,027.13 item sales, and BRL 137.00 item AOV.
+
+Machine-readable outputs are stored in [`../reports/sql_validation/`](../reports/sql_validation/).
+
+## Analytical scope
+
+The reporting window covers purchases from 2017-01-01 inclusive to 2018-09-01 exclusive. Item sales exclude freight and do not represent company revenue or profit. Review comparisons are descriptive; inspect timing sensitivity before interpreting them.

@@ -1,0 +1,22 @@
+Variable_name	Value
+local_infile	ON
+table_name	expected_rows	staged_rows
+customers	99441	99441
+products	32951	32951
+orders	99441	99441
+order_items	112650	112650
+reviews	98673	98673
+table_name	existing_rows
+customers	0
+products	0
+orders	0
+order_items	0
+reviews	0
+orders_rows
+99441
+table_name	staged_rows	loaded_rows	check_result
+customers	99441	99441	PASS
+products	32951	32951	PASS
+orders	99441	99441	PASS
+order_items	112650	112650	PASS
+reviews	98673	98673	PASS

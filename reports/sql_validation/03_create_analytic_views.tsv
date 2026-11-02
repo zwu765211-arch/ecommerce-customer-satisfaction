@@ -1,0 +1,8 @@
+view_rows	unique_orders	orders_without_items	orders_without_reviews
+99441	99441	775	768
+source_item_sales	view_item_sales	source_freight	view_freight
+13591643.70	13591643.70	2251909.54	2251909.54
+source_rows	detail_rows	unique_item_keys	source_sales	detail_sales	sales_difference
+112650	112650	112650	13591643.70	13591643.70	0.00
+source_items	view_items	source_sales	view_sales	source_freight	view_freight
+112650	112650	13591643.70	13591643.70	2251909.54	2251909.54

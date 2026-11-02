@@ -1,0 +1,81 @@
+table_name	expected_rows	actual_rows	row_difference	check_result
+customers	99441	99441	0	PASS
+products	32951	32951	0	PASS
+orders	99441	99441	0	PASS
+order_items	112650	112650	0	PASS
+reviews	98673	98673	0	PASS
+table_name	expected_grain	total_rows	unique_keys	duplicate_rows	check_result
+customers	customer_id	99441	99441	0	PASS
+products	product_id	32951	32951	0	PASS
+orders	order_id	99441	99441	0	PASS
+order_items	(order_id, order_item_id)	112650	112650	0	PASS
+reviews	order_id	98673	98673	0	PASS
+missing_order_id	missing_customer_id	missing_order_status	missing_purchase_timestamp	missing_estimated_delivery_date	missing_approved_at	missing_carrier_date	missing_customer_delivery_date	missing_delivery_days	missing_delivery_delay_days	missing_is_late	missing_exact_delivery_days	eligible_late_rate_orders
+0	0	0	0	0	160	1783	2965	2965	2965	2971	2971	96470
+order_status	order_count	missing_carrier_date	missing_customer_delivery_date	missing_delivery_days
+delivered	96478	2	8	8
+shipped	1107	0	1107	1107
+canceled	625	550	619	619
+unavailable	609	609	609	609
+invoiced	314	314	314	314
+processing	301	301	301	301
+created	5	5	5	5
+approved	2	2	2	2
+field_checked	invalid_rows	check_result
+orders.order_status	0	PASS
+orders.purchase_month	0	PASS
+orders.is_late	0	PASS
+reviews.review_score	0	PASS
+products.missing_physical_attributes	0	PASS
+orders.delivery_analysis_valid	0	PASS
+orders.carrier_before_purchase	0	PASS
+orders.delivery_before_carrier	0	PASS
+orders.non_delivered_with_delivery_date	0	PASS
+reviews.review_before_delivery	0	PASS
+earliest_purchase	latest_purchase	earliest_delivery	latest_delivery
+2016-09-04 21:15:19	2018-10-17 17:30:18	2016-10-11 13:46:32	2018-10-17 13:22:46
+rule_checked	exception_rows	check_result
+inconsistent_purchase_date	0	PASS
+inconsistent_purchase_year	0	PASS
+inconsistent_purchase_month	0	PASS
+inconsistent_analysis_valid	0	PASS
+inconsistent_exact_duration	0	PASS
+inconsistent_whole_elapsed_days	0	PASS
+inconsistent_calendar_delay	0	PASS
+eligible_orders_missing_late_flag	0	PASS
+ineligible_orders_with_late_flag	0	PASS
+inconsistent_late_flag_values	0	PASS
+inconsistent_carrier_before_purchase	0	PASS
+inconsistent_delivery_before_carrier	0	PASS
+inconsistent_non_delivered_flag	0	PASS
+rule_checked	exception_rows	check_result
+inconsistent_review_timing_flag	0	PASS
+observation	expected_rows	observed_rows	observation_status	snapshot_check
+Carrier timestamp before purchase	166	166	REVIEW	PASS
+Customer delivery before carrier timestamp	23	23	REVIEW	PASS
+Customer delivery before purchase	0	0	CLEAR	PASS
+Estimated date before purchase date	0	0	CLEAR	PASS
+Non-delivered status with actual delivery timestamp	6	6	REVIEW	PASS
+Delivered status missing actual delivery timestamp	8	8	REVIEW	PASS
+Delivered orders ineligible for late-rate analysis	8	8	REVIEW	PASS
+Retained review response before delivery (delivered orders)	4654	4654	REVIEW	PASS
+Retained review created before delivery (delivered orders)	8127	8127	REVIEW	PASS
+Orders without item records	775	775	REVIEW	PASS
+Orders without a retained review	768	768	REVIEW	PASS
+Products with missing physical attributes	2	2	REVIEW	PASS
+Products with zero weight	4	4	REVIEW	PASS
+rule_checked	exception_rows	check_result
+products_invalid_physical_values	0	PASS
+products_inconsistent_volume	0	PASS
+products_inconsistent_missing_flag	0	PASS
+products_inconsistent_volume_nulls	0	PASS
+order_items_invalid_values	0	PASS
+orders_not_starting_at_item_one	0	PASS
+total_products	missing_weight	missing_length	missing_height	missing_width	flagged_physical_missing
+32951	2	2	2	2	2
+total_reviews	reviewed_orders	unique_review_ids	minimum_review_score	maximum_review_score
+98673	98673	98101	1	5
+join_checked	expected_rows	joined_rows	row_difference	check_result
+orders_to_customers	99441	99441	0	PASS
+order_items_to_orders_and_products	112650	112650	0	PASS
+reviews_to_orders	98673	98673	0	PASS
